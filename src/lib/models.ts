@@ -1,6 +1,14 @@
-import mongoose from "mongoose";
+import mongoose, {Document, Model, Schema} from "mongoose";
 
-const eventSchema = new mongoose.Schema({
+export type IEventApe =  {
+    title: string,
+    description: string,
+    imageUrl: string,
+    slug: string,
+    createdAt: Date,
+}
+
+const eventSchema:Schema = new mongoose.Schema<IEventApe>({
     title: {
         type: String,
         required: true,
@@ -24,7 +32,7 @@ const eventSchema = new mongoose.Schema({
     },
    });
 
-const homeSchema = new mongoose.Schema({
+const homeSchema: Schema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -48,5 +56,5 @@ const homeSchema = new mongoose.Schema({
     },
 });
 
-export const Event = mongoose.models.Event || mongoose.model("Event", eventSchema);
+export const Event: Model<IEventApe> = mongoose.models.Event || mongoose.model<IEventApe>("Event", eventSchema);
 export const HomeArticle = mongoose.models.HomeArticle || mongoose.model("HomeArticle", homeSchema);
