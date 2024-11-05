@@ -3,10 +3,10 @@ import '@mantine/core/styles.css';
 
 export const metadata = {
   title: {
-    default:"APE, les Villards sur Thônes",
-    template:"%s | APE Villards sur Thônes"
+    default:"Fabrice MIQUET-SAGE - web developper",
+    template:"%s | Fabrice MIQUET-SAGE"
   },
-  description: "Blog de l'association",
+  description: "Portfolio développeur fullstack Typescript, orienté frontend React",
 };
 
 const Page = () => {

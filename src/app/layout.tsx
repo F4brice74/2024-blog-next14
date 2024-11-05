@@ -9,6 +9,7 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import React from "react";
 import { Links } from "../components/Links/Links";
+import SessionWrapper from "../components/SessionWrapper";
 
 export default function RootLayout({
   children,
@@ -22,6 +23,8 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
+        <SessionWrapper>
+
         <MantineProvider>
           <AppShell
             header={{ height: 60 }}
@@ -58,6 +61,7 @@ export default function RootLayout({
               </AppShell.Main>
           </AppShell>
         </MantineProvider>
+        </SessionWrapper>
       </body>
     </html>
   );

@@ -1,14 +1,9 @@
 import mongoose, {Document, Model, Schema} from "mongoose";
+import { Post } from "./types";
+import { identity } from "@mantine/core/lib/core/factory/factory";
 
-export type IEventApe =  {
-    title: string,
-    description: string,
-    imageUrl: string,
-    slug: string,
-    createdAt: Date,
-}
-
-const eventSchema:Schema = new mongoose.Schema<IEventApe>({
+const postSchema:Schema = new mongoose.Schema<Post>({
+  
     title: {
         type: String,
         required: true,
@@ -27,34 +22,18 @@ const eventSchema:Schema = new mongoose.Schema<IEventApe>({
         unique: true,
     },
     createdAt: {
-        type: Date,
-        required: true,
+        type: Date,       
+        default: new Date()
     },
+    deletedAt: {
+        type: Date, 
+        
+    }, 
+    isReference: {
+        type: Boolean,        
+        default:false
+    }
    });
 
-const homeSchema: Schema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-    },
-    version: {
-        type: Number,
-        required: true,
-        unique: true,
-    },
-    mainDescription: {
-        type: String,
-        required: true,
-    },
-    secondDescription: {
-        type: String,
-        required: false,
-    },
-    imageUrl: {
-        type: String,
-        required: false,
-    },
-});
+export const PostModel: Model<Post> = mongoose.models.Post || mongoose.model<Post>("Post", postSchema);
 
-export const Event: Model<IEventApe> = mongoose.models.Event || mongoose.model<IEventApe>("Event", eventSchema);
-export const HomeArticle = mongoose.models.HomeArticle || mongoose.model("HomeArticle", homeSchema);
