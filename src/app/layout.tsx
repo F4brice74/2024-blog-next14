@@ -23,8 +23,8 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body>
-        <SessionWrapper>
-
+      
+   <SessionWrapper> 
         <MantineProvider>
           <AppShell
             header={{ height: 60 }}
